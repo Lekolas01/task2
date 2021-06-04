@@ -1,0 +1,5 @@
+generalization(x,b,4).
+generalization(x,o,5).
+generalization(o,x,6).
+generalization(b,o,1).
+generalization(o,b,2).
