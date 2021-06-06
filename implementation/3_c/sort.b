@@ -1,21 +1,33 @@
-:- modeh(*,sort(+list,+list)).
+:- modeh(*,my_sort(+list,+return_list)).
+:- modeh(*,my_sort(+list,+list)).
+
 %http://colin.barker.pagesperso-orange.fr/tpro1/sorts.htm
 
-append([], Ys, Ys).
-append([X|Xs], Ys, [X|Zs]):-append(Xs, Ys, Zs).
+my_append([], Ys, Ys).
+my_append([X|Xs], Ys, [X|Zs]):-
+    my_append(Xs, Ys, Zs).
 
-%:- set(minpos, 5).
+:- set(minpos, 3).
+:- set(i, 3).
 
-:- modeb(*,append(+any, [+any,+any|+list], +any)).
+:- modeb(*,my_append(+list, [+any,+any|+list], +list)).
+:- modeb(*,my_append(+list, +list, +list)).
 
+
+:- modeb(*,((+list) = ([-any, -any|-list]))).
+
+:- modeb(1,((+any) < (+any))).
+%:- modeb(1,((+any) < ([+any]))).
 %:- modeb(1,((+list) = ([-any]))).
-:- modeb(1,((+list) = ([-any_2|-list]))).
+%:- modeb(1,((+list) = ([-any_2|-list]))).
+:- modeb(1,((+list) = ([-any|-list]))).
+:- modeb(1,my_sort(+list, +list)).
+:- modeb(1,my_sort(+list, -return_list)).
 :- modeb(1,!).
-:- modeb(1,sort(+list, +list)).
 
 
-:- determination(sort/2,append/3).
-:- determination(sort/2,sort/2).
-%:- determination(sort/2,'='/2).
-:- determination(sort/2,'!'/2).
-:- determination(sort/2,'<'/2).
+:- determination(my_sort/2,my_append/3).
+:- determination(my_sort/2,my_sort/2).
+:- determination(my_sort/2,'='/2).
+:- determination(my_sort/2,'!'/0).
+:- determination(my_sort/2,'<'/2).
