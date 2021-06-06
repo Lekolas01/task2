@@ -1,9 +1,9 @@
 % ------------ variable settings ------------ 
 
 :- set(clauselength, 6).
-:- set(minpos, 15).
-:- set(minacc, 0.85).
-:- set(verbosity,0).
+:- set(minpos, 5).
+:- set(minacc, 0.9).
+:- set(verbosity,1).
 :- set(evalfn,laplace).
 :- set(search,heuristic).
 
