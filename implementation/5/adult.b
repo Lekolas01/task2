@@ -62,7 +62,6 @@ race(black). race(other). race(amer_indian_eskimo). race(asian_pac_islander). ra
 sex(male). sex(female).
 hours_per_week(9). hours_per_week(42). hours_per_week(99). hours_per_week(46). hours_per_week(15). hours_per_week(70). hours_per_week(14). hours_per_week(54). hours_per_week(12). hours_per_week(98). hours_per_week(26). hours_per_week(13). hours_per_week(25). hours_per_week(32). hours_per_week(80). hours_per_week(58). hours_per_week(10). hours_per_week(8). hours_per_week(65). hours_per_week(21). hours_per_week(44). hours_per_week(45). hours_per_week(18). hours_per_week(37). hours_per_week(38). hours_per_week(19). hours_per_week(6). hours_per_week(7). hours_per_week(50). hours_per_week(47). hours_per_week(28). hours_per_week(60). hours_per_week(30). hours_per_week(36). hours_per_week(64). hours_per_week(20). hours_per_week(40). hours_per_week(52). hours_per_week(48). hours_per_week(2). hours_per_week(24). hours_per_week(34). hours_per_week(56). hours_per_week(75). hours_per_week(5). hours_per_week(55). hours_per_week(22). hours_per_week(33). hours_per_week(1). hours_per_week(35). hours_per_week(72). hours_per_week(43). hours_per_week(41). hours_per_week(16).
 country(cambodia). country(laos). country(italy). country(portugal). country(poland). country(south). country(guatemala). country(england). country(cuba). country(honduras). country(canada). country(columbia). country(ecuador). country(france). country(china). country(mexico). country(puerto_rico). country(taiwan). country(germany). country(iran). country(el_salvador). country(united_states). country(dominican_republic). country(haiti). country(philippines). country(india). country(jamaica). country(thailand).
-
 :- modeb(1,(+age = #age)).
 :- modeb(1,(+workclass = #workclass)).
 :- modeb(1,(+education_num = #education_num)).
@@ -71,3 +70,6 @@ country(cambodia). country(laos). country(italy). country(portugal). country(pol
 :- modeb(1,(+sex = #sex)).
 :- modeb(1,(+hours_per_week = #hours_per_week)).
 :- modeb(1,(+country = #country)).
+
+:- set(test_pos,'adult_test.f').
+:- set(test_neg,'adult_test.n').
