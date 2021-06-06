@@ -1,4 +1,4 @@
-:- modeh(1,generalization(+att1,+int,+att3,+att4,+att6,+att7,+att8,+att9,+att10,+att12,+att14,+att15,+att17,+att18,+att19,+att20)).
+:- modeh(1,generalization(+att1,+att2,+att3,+att4,+att6,+att7,+att8,+att9,+att10,+att12,+att14,+att15,+att17,+att18,+att19,+att20)).
 
 
 att1(a13).
@@ -94,18 +94,6 @@ att19(a191).
 att20(a202).
 att20(a201).
 
-%zahl(0).
-%zahl(1).
-%zahl(2).
-%zahl(3).
-%zahl(4).
-%zahl(5).
-%zahl(6).
-
-%let(x).
-%let(o).
-%let(b).
-
 lteq(X,Y):-
         number(X), number(Y),
         X =< Y.
@@ -119,8 +107,24 @@ gteq(X,X):-
         number(X).
 
 
+lt(X,Y):-
+        number(X), number(Y),
+        X < Y.
+lt(X,X):-
+        number(X).
 
-:- modeb(1,lteq(+int,+int)).
+gt(X,Y):-
+        number(X), number(Y),
+        X > Y.
+gt(X,X):-
+        number(X).
+
+not(X,Y):-
+        X \= Y.
+
+
+
+%:- modeb(1,lteq(+int,+int)).
 %:- modeb(1,lteq(+int,#zahl)).
 
 %:- modeb(1,gteq(+int,+int)).
@@ -128,16 +132,20 @@ gteq(X,X):-
 
 :- modeb(1,gteq(+att2,#att2)).
 :- modeb(1,lteq(+att2,#att2)).
-
 :- modeb(1,gteq(+att8,#att8)).
 :- modeb(1,lteq(+att8,#att8)).
-
 :- modeb(1,gteq(+att18,#att18)).
 :- modeb(1,lteq(+att18,#att18)).
+:- modeb(1,gt(+att2,#att2)).
+:- modeb(1,lt(+att2,#att2)).
+:- modeb(1,gt(+att8,#att8)).
+:- modeb(1,lt(+att8,#att8)).
+:- modeb(1,gt(+att18,#att18)).
+:- modeb(1,lt(+att18,#att18)).
 
 
-:- modeb(1,(+int = +int)).
-:- modeb(1,(+int = #zahl)).
+%:- modeb(1,(+int = +int)).
+%:- modeb(1,(+int = #zahl)).
 %:- modeb(1,(+let = +let)).
 %:- modeb(1,(+let = #let)).
 
@@ -159,17 +167,68 @@ gteq(X,X):-
 :- modeb(1,(+att19 = #att19)).
 :- modeb(1,(+att20 = #att20)).
 
+%:- modeb(1,not(+att1, #att1)).
+%:- modeb(1,not(+att2, #att2)).
+%:- modeb(1,not(+att3, #att3)).
+%:- modeb(1,not(+att4, #att4)).
+%:- modeb(1,not(+att5, #att5)).
+%:- modeb(1,not(+att6, #att6)).
+%:- modeb(1,not(+att7, #att7)).
+%:- modeb(1,not(+att8, #att8)).
+%:- modeb(1,not(+att9, #att9)).
+%:- modeb(1,not(+att10, #att10)).
+%:- modeb(1,not(+att12, #att12)).
+%:- modeb(1,not(+att14, #att14)).
+%:- modeb(1,not(+att15, #att15)).
+%:- modeb(1,not(+att17, #att17)).
+%:- modeb(1,not(+att18, #att18)).
+%:- modeb(1,not(+att19, #att19)).
+%:- modeb(1,not(+att20, #att20)).
+
+%:- modeb(1,(+att2 \= #att2)).
+%:- modeb(1,(+att3 \= #att3)).
+%:- modeb(1,(+att4 \= #att4)).
+%:- modeb(1,(+att5 \= #att5)).
+%:- modeb(1,(+att6 \= #att6)).
+%:- modeb(1,(+att7 \= #att7)).
+%:- modeb(1,(+att8 \= #att8)).
+%:- modeb(1,(+att9 \= #att9)).
+%:- modeb(1,(+att10 \= #att10)).
+%:- modeb(1,(+att12 \= #att12)).
+%:- modeb(1,(+att14 \= #att14)).
+%:- modeb(1,(+att15 \= #att15)).
+%:- modeb(1,(+att17 \= #att17)).
+%:- modeb(1,(+att18 \= #att18)).
+%:- modeb(1,(+att19 \= #att19)).
+%:- modeb(1,(+att20 \= #att20)).
+
 
 %:- modeb(1,att20(+att20)).
+%evalfn, noise, search
+%:- set(i,3).
+:- set(clauselength, 6).
+:- set(minpos, 15).
+:- set(minacc, 0.85).
+%:- set(noise,10).
+:- set(verbosity,0).
+:- set(evalfn,laplace).
+:- set(search,heuristic).
+%:- set(clauses,30).
 
-:- set(i,3).
-:- set(noise,100).
-%:- set(clauses,1).
+% evalfn: coverage, compression, posonly, pbayes, accuracy, laplace, auto_m, mestimate, entropy, gini, sd, wracc, or user
+% search: bf, df, heuristic, ibs, ils, rls, scs id, ic, ar, or false
 
+:- determination(generalization/16,lt/2).
+:- determination(generalization/16,gt/2).
+:- determination(generalization/16,lteq/2).
+:- determination(generalization/16,gteq/2).
+:- determination(generalization/16,'='/2).
+:- determination(generalization/16,not/2).
 
-:- determination(generalization/17,lteq/2).
-:- determination(generalization/17,gteq/2).
-:- determination(generalization/17,'='/2).
-:- determination(generalization/17,'<'/2).
-:- determination(generalization/17,'>'/2).
-:- determination(generalization/17,is/2).
+%:- determination(generalization/16,'\='/2).
+%:- determination(generalization/16,'<'/2).
+%:- determination(generalization/16,'>'/2).
+%:- determination(generalization/16,is/2).
+
+:- set(test_pos,'generalization_test.f').
+:- set(test_neg,'generalization_test.n').
